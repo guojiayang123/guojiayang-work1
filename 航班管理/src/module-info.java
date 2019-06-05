@@ -5,5 +5,5 @@
  * @author Aatrox
  *
  */
-module 航班管理 {
+module 航班管理1 {
 }

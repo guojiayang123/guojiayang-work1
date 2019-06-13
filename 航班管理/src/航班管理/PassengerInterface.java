@@ -1,6 +1,8 @@
-package 航班管理;
+ package 航班管理;
 
-public class PassengerInterface {
- 
-	
-}
+public interface PassengerInterface {
+	public String getName();
+	public int getBookingNumber();
+	public int getRow();
+	public int getSeatPosition();
+	}

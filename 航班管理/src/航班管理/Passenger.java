@@ -3,21 +3,21 @@ package ∫Ω∞‡π‹¿Ì;
 public class Passenger implements PassengerInterface
 {
 	private String Names;
-	private int BookingNumeber;
+	private int BookingNumber;
 	private int Rows;
 	private int SeatPosition;
 	
-	public Passenger(String Names,int BookingNumeber,int Rows,int SeatPosition) {
+	public Passenger(String Names,int BookingNumber,int Rows,int SeatPosition) {
 		this.Names=Names;
-		this.BookingNumeber=BookingNumeber;
-		this.Rrows=Rows;
+		this.BookingNumber=BookingNumber;
+		this.Rows=Rows;
 		this.SeatPosition=SeatPosition;
 	}
 	public String getName() {
 		return Names;
 	}
-	public int getBookingNumeber() {
-		return BookingNumeber;
+	public int getBookingNumber() {
+		return BookingNumber;
 	}
 	public int getRow() {
 		return Rows;

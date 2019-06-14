@@ -46,5 +46,20 @@ public class Flight implements FlightInterface{
 		}
 		return bn;
 	}
+	public boolean cancel(int BookingNumber) {
+		boolean Status=false;
+		for(int i=0;i<=Row*RowLength;i++) {
+			if(PassengerList[i]!=null&&BookingNumber==PassengerList[i].getBookingNumber()) 
+			{
+				Status=true;
+				PassengerList[i]=null;
+				break;
+			}
+		}
+		return Status;
+	} 
+	public Passenger[] getPassengerList() {
+		return PassengerList;
+	}
 
 }

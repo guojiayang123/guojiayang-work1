@@ -1,5 +1,7 @@
 package º½°à¹ÜÀí;
 
+import java.io.BufferedReader;
+
 public class Client {
 	private String FlightName=null;
 	private int Row=0;
@@ -27,6 +29,44 @@ public class Client {
 			System.out.println("*************************************************\n\n\n");
 		}
 		System.out.print("\nCOMMAND>");
+		try {
+			cmdString=br.readLine().trim();
+		}catch(IOEexception e) {
+			System.out.println("command error!  ");
+			cmdString=null;
+		}
+	}
+	private void processCommand() {
+		String[] cmds;
+		String cmd;
+		if(cmdString!=null) {
+			cmds=command(cmdString);
+			if(cmds!=null) {
+				cmd=cmds[0].toLowerCase();
+				if(cmd.equals("create")) {
+					if(FlightName==null);
+					createCommand(cmds);
+					else {
+						System.out.println("Create Error:can't handle more flight!");
+					}
+				}else if(cmd.equals("reserve")) {
+					if(FlightName!=null)
+						reserveCommand(cmds);
+				}else if(cmd.equals("cancel")) {
+					if(FlightName!=null)
+						cancelCommand(cmds);
+				}else if(cmd.equals("list")) {
+					if(FlightName!=null)
+						listCommand(cmds);
+				}else if(cmd.equals("exit")) {
+					System.out.println("Thanks.See you later!");
+					Sysrem.exit(0);
+				}else {
+					System.out.println("Bad command!");
+					cmdString=null;
+				}
+			}
+		}
 	}
 	
 

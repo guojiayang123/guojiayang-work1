@@ -1,6 +1,7 @@
 package ∫Ω∞‡π‹¿Ì;
 
 import java.io.BufferedReader;
+import java.util.StringTokenizer;
 
 public class Client {
 	private String FlightName=null;
@@ -68,8 +69,57 @@ public class Client {
 			}
 		}
 	}
-	
-
+	private String[] command(String cmDStr) {
+		int cc=0;
+		String[] cmd;
+		StringTokenizer st=new StringTokenizer(cmdStr);
+		if((cc=st.countTokens())==0)
+			return null;
+		cmd=new String[cc];
+		for(int i=0;i<cc;i++)
+			cmd[i]=st.nextToken();
+		return cmd;
+	}
+	private void createCommand(String[] cmds) {
+		if(cmds.length!=4) {
+			System.out.println("create command error!");
+		}
+		else {
+			FlightName=cmd[1];
+			Row=readInt(cmds[2]);
+			RowLength=readInt(cmds[3]);
+			if(Row<=0||RowLength<=0) {
+				System.out.println("create command parameters error!");
+				FlightName=null;
+				Row=0;
+				RowLength=0;
+			}else{
+				try{
+					Flight=new Flight(FlightName,Row,RowLength);
+					System.out.println("create Flight OK!");
+					
+				}catch(Exception e) {
+					System.out.println(e);
+					Flight=null;
+					FlightName=null;
+					Row=0;
+					RowLength=0;
+					
+				}
+			}
+		}
+	}
+    private void reserveCommand(String[] cmds) {
+    	if(cmds.length<=1) {
+    		System.out.println("reserve command error!");
+    		return;
+    	}
+    	String[] names=new String[cmds.length-1];
+    	for(int i=0;i<names.length;i++)
+    		names[i]=new String(cmds[i+1]);
+    	int[] bn
+    	
+    }
 	
 	
 }

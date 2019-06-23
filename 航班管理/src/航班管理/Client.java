@@ -114,11 +114,64 @@ public class Client {
     		System.out.println("reserve command error!");
     		return;
     	}
-    	String[] names=new String[cmds.length-1];
-    	for(int i=0;i<names.length;i++)
-    		names[i]=new String(cmds[i+1]);
-    	int[] bn
+    	String[] Names=new String[cmds.length-1];
+    	for(int i=0;i<Names.length;i++)
+    		Names[i]=new String(cmds[i+1]);
+    	int[] bn=Flight.reserve(Names);
+    	if(bn[0]!=-1) {
+    		for(int i=0;i<bn.length;i++)
+    			System.out.println(Names[i]+"s Booking Number is:"+bn[i]);
+    	}else
+    		System.out.println("No Such Sequential Seats Now!");
     	
+    }
+    private void cancelCommand(String[] cmds) {
+    	if(cmds.length!=2) {
+    		System.out.println("\ncancel command format error!");
+    		return;
+    	}
+    	int BookingNumber=readInt(cmds[1]);
+    	if(BookingNumber<=0) {
+    		System.out.println("\ncancel commandparameter error!");
+    		return;
+    		
+    	}
+    	boolean state=Flight.cancel(BookingNumber);
+    	if(state)
+    		System.out.println("Your seat has been cancelled!");
+    	else
+    		System.out.println("The sea has not been reserved!");
+    	
+    }
+    private void ListCommand(String[] cmds) {
+    	if(cmds.length!=1) {
+    		System.out.println("\nlist command format error!");
+    		return;
+    	}
+    	Passenger[] PassengerList=Flight.getPassengerList();
+    	int flag=0;
+    	System.out.println("Name Booking Number Row Seat Position");
+    	System.out.println("------------------------------------------");
+    	if(PassengerList=null||PassengerList.length<=0)
+    		System.out.println("Now no seat is occupied!");
+    	else {
+    		flag=0;
+    		for(int b=0;b<PassengerList.length;b++) {
+    			if(PassengerListP[b]!=null) {
+    				flag=1;
+    				System.out.println(formatStr(PassengerList[b].getName())+formatStr(""+PassengerList[b].getBookingNumber())+formatStr(""+PassengerList[b].getRow())+formatStr(""+PassengerList[b].getSeatPosition()));
+    			}
+    		}
+    		if(flag==0)
+    			System.out.println("Now no seat is occupied!");
+    	}
+    	
+    	
+    	}
+    private String formatStr(String s) {
+    	for(int i=0;i<16-s.trim().length();i++)
+    		s+='';
+    	return s;
     }
 	
 	
